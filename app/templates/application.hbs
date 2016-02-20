@@ -1,3 +1,8 @@
 <h2 id="title">Welcome to Ember</h2>
 
 {{outlet}}
+
+{{#each model as |m|}}
+  {{md-text text=m.text}}
+  <hr>
+{{/each}}
