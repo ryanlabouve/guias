@@ -1,0 +1,21 @@
+<aside class="sidebar">
+  <label for="version-select" class="visually-hidden">Guides version</label>
+  {{#power-select
+      options=sortedVersions
+      selected=selected
+      onchange=(action 'changeVersion') as |version|}}
+    {{version}}
+  {{/power-select}}
+
+  <input id="toc-toggle" class="toc-toggle visually-hidden" type="checkbox" />
+  <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label>
+
+  <nav class="toc-container" aria-label="table of contents">
+    <!-- FIXME:
+      <%= toc_for(data.pages) %>
+    //-->
+    {{table-of-contents}}
+  </nav>
+
+  <!-- FIXME: <%= link_to "&#11014; Back to Top".html_safe, "#", class: "back-to-top" %>//-->
+</aside>

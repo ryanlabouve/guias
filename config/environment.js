@@ -6,7 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
-    emberPouch: { localDb: 'ember-pouch-test' },
+    emberPouch: { localDb: 'ember-guides' },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -26,6 +26,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.emberPouch.remoteDb = 'http://127.0.0.1:5984/ember-guides';
   }
 
   if (environment === 'test') {
@@ -41,16 +42,16 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.emberPouch.remoteDb = 'https://therymnswerseesticaskere:e1a33ad1a2fded7aa758e5a067d32336797a5369@locks.cloudant.com/ember-guides';
 
-  }
-
-  ENV.manifest = {
-    enabled: true,
-    appcacheFile: "/manifest.appcache",
-    excludePaths: ['index.html'],
-    includePaths: ['/'],
-    network: ['api/'],
-    showCreateDate: true
+    ENV.manifest = {
+      enabled: true,
+      appcacheFile: "/manifest.appcache",
+      excludePaths: ['index.html'],
+      includePaths: ['/'],
+      network: ['*'],
+      showCreateDate: true
+    }
   }
 
   return ENV;

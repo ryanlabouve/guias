@@ -1,8 +1,15 @@
-<h2 id="title">Welcome to Ember</h2>
+<style>
+  .highlight:hover {
+    font-size: 1.2rem;
+  }
+</style>
 
-{{outlet}}
+{{partial 'header'}}
 
-{{#each model as |m|}}
-  {{md-text text=m.text}}
-  <hr>
-{{/each}}
+<main class="container">
+  {{partial 'sidebar'}}
+
+  {{outlet}}
+</main>
+
+{{layout-footer}}

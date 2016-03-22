@@ -1,7 +1,7 @@
-import { Adapter } from 'ember-pouch';
+import Ember from 'ember';
+import DS from 'ember-data';
 import PouchDB from 'pouchdb';
 import config from 'guias/config/environment';
-import Ember from 'ember';
 
 const { assert, isEmpty } = Ember;
 
@@ -26,9 +26,15 @@ function createDb() {
   return db;
 }
 
-export default Adapter.extend({
+export default Ember.Service.extend({
   init() {
     this._super(...arguments);
     this.set('db', createDb());
-  }
+  },
+
+  allDocs: Ember.computed(function() {
+    return new DS.PromiseArray({
+      promise: this.get('db').allDocs({ include_docs: true }).then(r => r.rows.map(r => r.doc))
+    });
+  })
 });

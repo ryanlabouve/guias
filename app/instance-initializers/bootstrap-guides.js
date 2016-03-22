@@ -78,6 +78,7 @@ Good luck!
 `;
 
 export function initialize(appInstance) {
+  let pouchdb = appInstance.lookup('service:pouchdb');
   let store = appInstance.lookup('service:store');
   let guide = store.createRecord('guide', {
     name: 'index',
@@ -88,7 +89,11 @@ export function initialize(appInstance) {
   guide.save();
 }
 
+function initialize2() {
+
+}
+
 export default {
   name: 'bootstrap-guides',
-  initialize: initialize
+  initialize: initialize2
 };

@@ -6,6 +6,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('guides', { path: ':version' });
+  this.route('guide', { path: ':version/:section/:guide' });
 });
 
 export default Router;
