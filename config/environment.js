@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'guias',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'mapped',
+    historySupportMiddleware: true, // necessary for custom location type
     emberPouch: { localDb: 'ember-guides' },
     EmberENV: {
       FEATURES: {
